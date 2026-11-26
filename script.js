@@ -88,5 +88,18 @@ async function showMovieDetails(imdbID) {
         movieContainer.innerHTML = "<p>Unable to load details!</p>";
     }
 }
+function toggleFavorite(imdbID) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.includes(imdbID)) {
+        favorites = favorites.filter(id => id !== imdbID);
+    } else {
+        favorites.push(imdbID);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    showFavorites();
+}
 
 
