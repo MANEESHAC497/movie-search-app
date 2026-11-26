@@ -1,4 +1,6 @@
-function searchMovie() {
+const API_KEY = "PASTE_YOUR_API_KEY_HERE";
+
+async function searchMovie() {
     const movieName = document.getElementById("searchInput").value;
     const movieContainer = document.getElementById("movieContainer");
 
@@ -8,4 +10,31 @@ function searchMovie() {
     }
 
     movieContainer.innerHTML = "<p>Searching for " + movieName + "...</p>";
+
+    try {
+        const response = await fetch(
+            `https://www.omdbapi.com/?apikey=${API_KEY}&s=${encodeURIComponent(movieName)}`
+        );
+
+        const data = await response.json();
+
+        if (data.Response === "False") {
+            movieContainer.innerHTML = "<p>Movie not found!</p>";
+            return;
+        }
+
+        movieContainer.innerHTML = "";
+
+        data.Search.forEach(movie => {
+            movieContainer.innerHTML += `
+                <div class="movie-card">
+                    <img src="${movie.Poster !== "N/A" ? movie.Poster : ""}" alt="${movie.Title}">
+                    <h3>${movie.Title}</h3>
+                    <p>Year: ${movie.Year}</p>
+                    <p>Type: ${movie.Type}</p>
+                `;
+        });
+    } catch (error) {
+        movieContainer.innerHTML = "<p>Something went wrong. Please try again!</p>";
+    }
 }
