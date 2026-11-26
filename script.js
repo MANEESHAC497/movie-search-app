@@ -1,4 +1,4 @@
-const API_KEY = "http://www.omdbapi.com/?i=tt3896198&apikey=a7056534";
+const API_KEY = "http://www.omdbapi.com/apikey.aspx?VERIFYKEY=fea80e4e-183d-479c-8ef4-50aa2b4369bf";
 
 async function searchMovie() {
     const movieName = document.getElementById("searchInput").value;
