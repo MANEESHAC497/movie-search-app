@@ -101,5 +101,42 @@ function toggleFavorite(imdbID) {
 
     showFavorites();
 }
+async function showFavorites() {
+    const container = document.getElementById("favoritesContainer");
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (favorites.length === 0) {
+        container.innerHTML = "<p>No favorite movies yet!</p>";
+        return;
+    }
+
+    container.innerHTML = "<p>Loading favorites...</p>";
+
+    let html = "";
+
+    for (const id of favorites) {
+        const response = await fetch(
+            `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`
+        );
+
+        const movie = await response.json();
+
+        if (movie.Response === "True") {
+            html += `
+                <div class="movie-card">
+                    <img src="${movie.Poster !== "N/A" ? movie.Poster : ""}">
+                    <h3>${movie.Title}</h3>
+                    <p>Year: ${movie.Year}</p>
+                    <p>IMDb Rating: ${movie.imdbRating}</p>
+                    <button onclick="toggleFavorite('${id}')">
+                        Remove ❤️
+                    </button>
+                </div>
+            `;
+        }
+    }
+
+    container.innerHTML = html;
+}
 
 
