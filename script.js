@@ -17,6 +17,7 @@ async function searchMovie() {
         );
 
         const data = await response.json();
+        console.log(data);
         
         if (data.Response === "False") {
     movieContainer.innerHTML = "<p>" + data.Error + "</p>";
