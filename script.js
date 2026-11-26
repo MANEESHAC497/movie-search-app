@@ -32,6 +32,7 @@ async function searchMovie() {
                     <h3>${movie.Title}</h3>
                     <p>Year: ${movie.Year}</p>
                     <p>Type: ${movie.Type}</p>
+                    </div>
                 `;
         });
     } catch (error) {
