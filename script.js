@@ -23,8 +23,8 @@ async function searchMovie() {
     movieContainer.innerHTML = "<p>" + data.Error + "</p>";
     return;
         }
-
-           movieContainer.innerHTML = "";
+        
+        movieContainer.innerHTML = "";
 
         data.Search.forEach(movie => {
             movieContainer.innerHTML += `
