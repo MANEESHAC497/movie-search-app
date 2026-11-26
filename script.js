@@ -138,5 +138,5 @@ async function showFavorites() {
 
     container.innerHTML = html;
 }
-
+showFavorites();
 
