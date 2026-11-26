@@ -46,3 +46,25 @@ button:hover {
     justify-content: center;
     gap: 20px;
 }
+.movie-card {
+    background: #1c2230;
+    width: 180px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.movie-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.movie-card p {
+    color: #cccccc;
+    font-size: 14px;
+}
