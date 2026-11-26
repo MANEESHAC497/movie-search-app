@@ -17,11 +17,13 @@ async function searchMovie() {
         );
 
         const data = await response.json();
-
+        
         if (data.Response === "False") {
-            movieContainer.innerHTML = "<p>Movie not found!</p>";
-            return;
+    movieContainer.innerHTML = "<p>" + data.Error + "</p>";
+    return;
         }
+
+        
 
         movieContainer.innerHTML = "";
 
